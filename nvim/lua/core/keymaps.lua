@@ -50,3 +50,8 @@ keymap("n", "=", [[<cmd>vertical resize +5<cr>]])
 keymap("n", "-", [[<cmd>vertical resize -5<cr>]])
 keymap("n", "+", [[<cmd>horizontal resize +2<cr>]])
 keymap("n", "_", [[<cmd>horizontal resize -2<cr>]])
+
+-- format
+keymap("n", ",f", function()
+	require("conform").format()
+end, { desc = "Format current file" })
