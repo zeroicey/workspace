@@ -55,3 +55,11 @@ keymap("n", "_", [[<cmd>horizontal resize -2<cr>]])
 keymap("n", ",f", function()
 	require("conform").format()
 end, { desc = "Format current file" })
+
+keymap("n", ",t", function()
+	require("oil").toggle_float()
+end, { desc = "Open parent directory" })
+
+keymap("n", "<M-e>", function()
+	require("oil").toggle_float()
+end, { desc = "Open parent directory" })
