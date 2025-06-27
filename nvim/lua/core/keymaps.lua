@@ -56,10 +56,5 @@ keymap("n", ",f", function()
 	require("conform").format()
 end, { desc = "Format current file" })
 
-keymap("n", ",t", function()
-	require("oil").toggle_float()
-end, { desc = "Open parent directory" })
-
-keymap("n", "<M-e>", function()
-	require("oil").toggle_float()
-end, { desc = "Open parent directory" })
+keymap("n", "<M-e>", "<CMD>Neotree toggle<CR>", { desc = "Open directory" })
+keymap("n", ",t", "<CMD>Neotree toggle<CR>", { desc = "Open directory" })
