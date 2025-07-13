@@ -209,6 +209,7 @@ return {
 			cssls,
 			html,
 			emmet_ls,
+			pyright,
 			-- clangd = {},
 			-- gopls = {},
 			-- pyright = {},

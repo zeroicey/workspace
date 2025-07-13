@@ -1,4 +1,3 @@
-# Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 # 当前脚本所在目录
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
 
@@ -17,3 +16,6 @@ if (Test-Path $nvimLink) {
     Remove-Item $nvimLink -Recurse -Force
 }
 cmd /c mklink /D `"$nvimLink`" `"$nvimTarget`"
+
+if (!(Test-Path (Split-Path $PROFILE -Parent))) { New-Item -ItemType Directory -Path (Split-Path $PROFILE -Parent) -Force | Out-Null }
+Copy-Item "$scriptDir\powershell\Microsoft.PowerShell_profile.ps1" $PROFILE -Force
