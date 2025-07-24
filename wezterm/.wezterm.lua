@@ -10,8 +10,7 @@ config.default_prog = { "pwsh.exe", "-NoLogo" }
 
 config.disable_default_key_bindings = true
 
-config.enable_tab_bar = true
--- config.window_decorations = "RESIZE"
+config.enable_tab_bar = false
 
 config.window_background_opacity = 0.9
 

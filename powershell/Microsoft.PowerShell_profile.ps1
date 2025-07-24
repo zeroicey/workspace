@@ -1,3 +1,4 @@
+# Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 Invoke-Expression (&starship init powershell)
 
 function y {
@@ -12,5 +13,6 @@ function y {
 
 Set-Alias -Name v -Value nvim
 Set-Alias -Name z -Value zoxide
+Set-Alias -Name cd -Value zoxide
 
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
