@@ -94,4 +94,6 @@ keymap("n", ",f", function()
 end, { desc = "Format File" })
 
 -- Telescope
-keymap("n", "<A-p>", ":Telescope find_files<CR>", { desc = "Telescope find files" })
+keymap("n", "<leader> ", ":Telescope find_files<CR>", { desc = "Telescope find files" })
+
+keymap("n", ";", ":", { desc = "Open the command" })

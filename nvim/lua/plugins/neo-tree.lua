@@ -10,6 +10,9 @@ return {
 	opts = {
 		close_if_last_window = true,
 		filesystem = {
+			window = {
+				mappings = {},
+			},
 			filtered_items = {
 				hide_dotfiles = false,
 				hide_gitignored = false,
