@@ -212,7 +212,7 @@ return {
 			pyright,
 			-- clangd = {},
 			-- gopls = {},
-			-- pyright = {},
+			pyright = {},
 			lua_ls = {
 				-- cmd = { ... },
 				-- filetypes = { ... },
