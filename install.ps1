@@ -1,3 +1,8 @@
+# You need to run this script in pwsh7 as Administrator to create the links.
+# After running this script, you need to run the following command to enable the execution policy:
+# Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+
 # 当前脚本所在目录
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
 

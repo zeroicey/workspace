@@ -8,8 +8,6 @@ config.font = wezterm.font("Cascadia Code")
 
 config.default_prog = { "pwsh.exe", "-NoLogo" }
 
-config.disable_default_key_bindings = true
-
 config.enable_tab_bar = false
 
 config.window_background_opacity = 0.9
@@ -39,22 +37,22 @@ config.keys = {
 		action = wezterm.action.CloseCurrentPane({ confirm = true }),
 	},
 	{
-		key = "h",
+		key = "H",
 		mods = "ALT",
 		action = act.ActivatePaneDirection("Left"),
 	},
 	{
-		key = "l",
+		key = "L",
 		mods = "ALT",
 		action = act.ActivatePaneDirection("Right"),
 	},
 	{
-		key = "k",
+		key = "K",
 		mods = "ALT",
 		action = act.ActivatePaneDirection("Up"),
 	},
 	{
-		key = "j",
+		key = "J",
 		mods = "ALT",
 		action = act.ActivatePaneDirection("Down"),
 	},

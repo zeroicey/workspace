@@ -211,7 +211,7 @@ return {
 			emmet_ls,
 			pyright,
 			-- clangd = {},
-			-- gopls = {},
+			gopls = {},
 			-- pyright = {},
 			lua_ls = {
 				-- cmd = { ... },
@@ -245,6 +245,7 @@ return {
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
 			"stylua", -- Used to format Lua code
+			"gopls",
 			"prettierd",
 			"isort",
 			"black",
