@@ -1,60 +1,99 @@
 local keymap = vim.keymap.set
 
--- Leaderkey Set
-keymap("n", "<Space>", "")
+-- -----------------------------------------------------------------------------
+-- Basic Setup
+-- -----------------------------------------------------------------------------
+
+-- Set <Space> as the leader key
+-- First, unmap <Space> to prevent it from triggering its default action (like 'l')
+keymap("n", "<Space>", "", { noremap = true, silent = true })
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Normal --
--- Better window navigation
-keymap("n", "<leader>h", "<C-w>h")
-keymap("n", "<leader>j", "<C-w>j")
-keymap("n", "<leader>k", "<C-w>k")
-keymap("n", "<leader>l", "<C-w>l")
+-- -----------------------------------------------------------------------------
+-- Window Management
+-- -----------------------------------------------------------------------------
 
--- window management
-keymap("n", "<leader>\\", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
-keymap("n", "<leader>-", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
+-- Use <leader> + h/j/k/l for quick window navigation
+keymap("n", "<leader>h", "<C-w>h", { desc = "Go to Left Window" })
+keymap("n", "<leader>j", "<C-w>j", { desc = "Go to Down Window" })
+keymap("n", "<leader>k", "<C-w>k", { desc = "Go to Up Window" })
+keymap("n", "<leader>l", "<C-w>l", { desc = "Go to Right Window" })
 
---
-keymap("n", "<leader>o", ":only<CR>")
+-- Window Splitting
+keymap("n", "<leader>\\", "<C-w>v", { desc = "Split Window Vertically" })
+keymap("n", "<leader>-", "<C-w>s", { desc = "Split Window Horizontally" })
 
--- Save && Quit
-keymap("n", ",q", ":q<CR>", { desc = "Quit current file" })
-keymap("n", ",w", ":w<CR>", { desc = "Save Current file" })
+-- Close all windows except the current one
+keymap("n", "<leader>o", ":only<CR>", { desc = "Keep Only Current Window" })
 
--- Faster move
-keymap("n", "H", "^")
-keymap("n", "L", "$")
-keymap("n", "J", "5j")
-keymap("n", "K", "5k")
+-- Window resizing
+keymap("n", "=", "<cmd>vertical resize +5<cr>", { desc = "Increase Window Width" })
+keymap("n", "-", "<cmd>vertical resize -5<cr>", { desc = "Decrease Window Width" })
+keymap("n", "+", "<cmd>horizontal resize +2<cr>", { desc = "Increase Window Height" })
+keymap("n", "_", "<cmd>horizontal resize -2<cr>", { desc = "Decrease Window Height" })
 
--- Visual
--- Stay in indent mode
-keymap("v", "<", "<gv")
-keymap("v", ">", ">gv")
+-- -----------------------------------------------------------------------------
+-- File & Buffer Management
+-- -----------------------------------------------------------------------------
 
--- Faster move
-keymap("v", "H", "^")
-keymap("v", "L", "g_")
-keymap("v", "J", "5j")
-keymap("v", "K", "5k")
+-- Save & Quit
+keymap("n", ",q", ":q<CR>", { desc = "Quit" })
+keymap("n", ",w", ":w<CR>", { desc = "Write (Save)" })
+-- Leader key versions (aliases, can be removed if you prefer one style)
+keymap("n", "<leader>q", ":q<CR>", { desc = "Quit" })
+keymap("n", "<leader>w", ":w<CR>", { desc = "Write (Save)" })
 
--- Operate buffer
-keymap("n", "<C-l>", ":bn<CR>")
-keymap("n", "<C-h>", ":bp<CR>")
-keymap("n", "<C-k>", ":bd<CR>")
+-- Buffer operations (requires bufferline.nvim plugin)
+keymap("n", "<A-h>", ":BufferLineCyclePrev<CR>", { desc = "Previous Buffer" })
+keymap("n", "<A-l>", ":BufferLineCycleNext<CR>", { desc = "Next Buffer" })
+keymap("n", "<A-k>", ":bd<CR>", { desc = "Close Current Buffer" })
+keymap("n", "<leader>bdl", ":BufferLineCloseLeft<CR>", { desc = "Close Buffers to the Left" })
+keymap("n", "<leader>bdr", ":BufferLineCloseRight<CR>", { desc = "Close Buffers to the Right" })
+keymap("n", "<leader>bp", ":BufferLinePick<CR>", { desc = "Pick and Go to Buffer" })
 
--- Window resize
-keymap("n", "=", [[<cmd>vertical resize +5<cr>]])
-keymap("n", "-", [[<cmd>vertical resize -5<cr>]])
-keymap("n", "+", [[<cmd>horizontal resize +2<cr>]])
-keymap("n", "_", [[<cmd>horizontal resize -2<cr>]])
+-- -----------------------------------------------------------------------------
+-- Motion & Editing
+-- -----------------------------------------------------------------------------
 
--- format
+-- Normal Mode
+-- Faster line navigation
+keymap("n", "H", "^", { desc = "Go to First Character of Line" })
+keymap("n", "L", "$", { desc = "Go to End of Line" })
+keymap("n", "J", "5j", { desc = "Move Down 5 Lines" })
+keymap("n", "K", "5k", { desc = "Move Up 5 Lines" })
+
+-- Visual Mode
+-- Stay in indent mode after indenting
+keymap("v", "<", "<gv", { desc = "Indent Left" })
+keymap("v", ">", ">gv", { desc = "Indent Right" })
+
+-- Faster line navigation in Visual Mode
+keymap("v", "H", "^", { desc = "Extend Selection to First Character" })
+keymap("v", "L", "g_", { desc = "Extend Selection to End of Line" })
+keymap("v", "J", "5j", { desc = "Extend Selection Down 5 Lines" })
+keymap("v", "K", "5k", { desc = "Extend Selection Up 5 Lines" })
+
+-- -----------------------------------------------------------------------------
+-- Plugin Keymaps
+-- -----------------------------------------------------------------------------
+
+-- File Explorer (requires neotree.nvim plugin)
+keymap("n", "<A-o>", ":Neotree buffers position=float<CR>", { desc = "Toggle NeoTree Buffers" })
+keymap("n", "<A-e>", function()
+	if vim.bo.filetype == "neo-tree" then
+		vim.cmd("Neotree close")
+	else
+		vim.cmd("Neotree filesystem reveal focus")
+	end
+end, { desc = "Focus or Toggle NeoTree filesystem" })
+
+-- Formatting (requires conform.nvim or another formatter plugin)
 keymap("n", ",f", function()
 	require("conform").format()
-end, { desc = "Format current file" })
+end, { desc = "Format File" })
 
-keymap("n", "<M-e>", "<CMD>Neotree toggle<CR>", { desc = "Open directory" })
-keymap("n", ",t", "<CMD>Neotree toggle<CR>", { desc = "Open directory" })
+-- Telescope
+keymap("n", "<leader> ", ":Telescope find_files<CR>", { desc = "Telescope find files" })
+
+keymap("n", ";", ":", { desc = "Open the command" })
