@@ -80,13 +80,7 @@ keymap("v", "K", "5k", { desc = "Extend Selection Up 5 Lines" })
 
 -- File Explorer (requires neotree.nvim plugin)
 keymap("n", "<A-o>", ":Neotree buffers position=float<CR>", { desc = "Toggle NeoTree Buffers" })
-keymap("n", "<A-e>", function()
-	if vim.bo.filetype == "neo-tree" then
-		vim.cmd("Neotree close")
-	else
-		vim.cmd("Neotree filesystem reveal focus")
-	end
-end, { desc = "Focus or Toggle NeoTree filesystem" })
+keymap("n", "<A-e>", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 -- Formatting (requires conform.nvim or another formatter plugin)
 keymap("n", ",f", function()
