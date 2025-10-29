@@ -40,9 +40,7 @@ keymap("n", "_", "<cmd>horizontal resize -2<cr>", { desc = "Decrease Window Heig
 -- Save & Quit
 keymap("n", ",q", ":q<CR>", { desc = "Quit" })
 keymap("n", ",w", ":w<CR>", { desc = "Write (Save)" })
--- Leader key versions (aliases, can be removed if you prefer one style)
-keymap("n", "<leader>q", ":q<CR>", { desc = "Quit" })
-keymap("n", "<leader>w", ":w<CR>", { desc = "Write (Save)" })
+keymap("n", "<leader>r", ":update<CR> :source<CR>")
 
 -- Buffer operations (requires bufferline.nvim plugin)
 keymap("n", "<A-h>", ":BufferLineCyclePrev<CR>", { desc = "Previous Buffer" })
@@ -80,7 +78,13 @@ keymap("v", "K", "5k", { desc = "Extend Selection Up 5 Lines" })
 
 -- File Explorer (requires neotree.nvim plugin)
 keymap("n", "<A-o>", ":Neotree buffers position=float<CR>", { desc = "Toggle NeoTree Buffers" })
-keymap("n", "<A-e>", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+keymap("n", "<A-e>", function()
+	if vim.bo.filetype == "neo-tree" then
+		vim.cmd("Neotree close")
+	else
+		vim.cmd("Neotree filesystem reveal focus")
+	end
+end, { desc = "Focus or Toggle NeoTree filesystem" })
 
 -- Formatting (requires conform.nvim or another formatter plugin)
 keymap("n", ",f", function()
@@ -88,6 +92,7 @@ keymap("n", ",f", function()
 end, { desc = "Format File" })
 
 -- Telescope
-keymap("n", "<leader> ", ":Telescope find_files<CR>", { desc = "Telescope find files" })
+keymap("n", "<A-p>", ":Telescope find_files<CR>", { desc = "Telescope find files" })
+keymap("n", "<leader> ", ":Telescope live_grep<CR>", { desc = "Telescope find words" })
 
 keymap("n", ";", ":", { desc = "Open the command" })
