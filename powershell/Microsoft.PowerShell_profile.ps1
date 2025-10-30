@@ -11,6 +11,7 @@ function y {
 }
 
 Set-Alias -Name v -Value nvim
+Set-Alias -Name vim -Value nvim
 Set-Alias -Name z -Value zoxide
 
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
