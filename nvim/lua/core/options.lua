@@ -4,6 +4,8 @@ opt.cursorline = true -- Highlight cursor line
 opt.mouse = "a" -- allow the mouse to be used in neovim
 opt.wrap = true -- display lines as one long line
 
+vim.opt.scrolloff = 5
+
 opt.number = true -- show line number
 opt.relativenumber = true -- Show relative number
 

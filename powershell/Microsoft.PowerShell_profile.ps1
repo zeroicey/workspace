@@ -13,5 +13,6 @@ function y {
 Set-Alias -Name v -Value nvim
 Set-Alias -Name vim -Value nvim
 Set-Alias -Name z -Value zoxide
+Set-Alias -Name make -Value mingw32-make
 
 Invoke-Expression (& { (zoxide init powershell | Out-String) })

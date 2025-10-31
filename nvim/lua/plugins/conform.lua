@@ -10,6 +10,8 @@ return {
 			-- Conform will run the first available formatter
 			javascript = { "prettierd", "prettier", stop_after_first = true },
 			golang = { "gofmt" },
+			cpp = { "clang_format" },
+			c = { "clang_format" },
 		},
 		format_on_save = {
 			-- These options will be passed to conform.format()
