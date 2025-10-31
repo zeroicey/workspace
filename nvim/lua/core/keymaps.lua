@@ -11,6 +11,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 keymap("i", "jj", "<Esc>")
+keymap("t", "jj", [[<C-\><C-n>]])
 
 -- -----------------------------------------------------------------------------
 -- Window Management

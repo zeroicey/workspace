@@ -1,1 +1,1 @@
-return { 'echasnovski/mini.statusline', version = '*', opts={} }
+return { "echasnovski/mini.statusline", version = "*", opts = {} }
