@@ -45,14 +45,6 @@ keymap("n", ",q", ":q<CR>", { desc = "Quit" })
 keymap("n", ",w", ":w<CR>", { desc = "Write (Save)" })
 keymap("n", "<leader>r", ":update<CR> :source<CR>")
 
--- Buffer operations (requires bufferline.nvim plugin)
-keymap("n", "<A-h>", ":BufferLineCyclePrev<CR>", { desc = "Previous Buffer" })
-keymap("n", "<A-l>", ":BufferLineCycleNext<CR>", { desc = "Next Buffer" })
-keymap("n", "<A-k>", ":bd<CR>", { desc = "Close Current Buffer" })
-keymap("n", "<leader>bdl", ":BufferLineCloseLeft<CR>", { desc = "Close Buffers to the Left" })
-keymap("n", "<leader>bdr", ":BufferLineCloseRight<CR>", { desc = "Close Buffers to the Right" })
-keymap("n", "<leader>bp", ":BufferLinePick<CR>", { desc = "Pick and Go to Buffer" })
-
 -- -----------------------------------------------------------------------------
 -- Motion & Editing
 -- -----------------------------------------------------------------------------
@@ -95,7 +87,9 @@ keymap("n", ",f", function()
 end, { desc = "Format File" })
 
 -- Telescope
+keymap("n", "<leader>o", ":Telescope buffers<CR>", { desc = "Telescope find buffers" })
 keymap("n", "<A-p>", ":Telescope find_files<CR>", { desc = "Telescope find files" })
 keymap("n", "<leader> ", ":Telescope live_grep<CR>", { desc = "Telescope find words" })
 
 keymap("n", ";", ":", { desc = "Open the command" })
+keymap("n", "gb", "<C-t>", { desc = "Go bact to previous definition" })

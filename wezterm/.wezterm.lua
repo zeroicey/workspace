@@ -8,8 +8,6 @@ config.font = wezterm.font("Cascadia Code")
 
 config.default_prog = { "pwsh.exe", "-NoLogo" }
 
-config.enable_tab_bar = false
-
 config.window_background_opacity = 0.9
 
 config.window_padding = {

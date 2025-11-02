@@ -3,6 +3,7 @@ local opt = vim.opt
 opt.cursorline = true -- Highlight cursor line
 opt.mouse = "a" -- allow the mouse to be used in neovim
 opt.wrap = true -- display lines as one long line
+opt.winborder = "rounded"
 
 vim.opt.scrolloff = 5
 

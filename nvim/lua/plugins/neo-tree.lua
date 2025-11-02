@@ -19,5 +19,31 @@ return {
 				hide_gitignored = false,
 			},
 		},
+		default_component_configs = {
+			indent = {
+				indent_size = 2,
+				padding = 2,
+				with_markers = false,
+				highlight = "NeoTreeIndentMarker",
+				with_expanders = true,
+				expander_collapsed = "",
+				expander_expanded = "",
+				expander_highlight = "NeoTreeExpander",
+			},
+			icon = {
+				folder_closed = "",
+				folder_open = "",
+				folder_empty = "",
+				default = "",
+				highlight = "NeoTreeFileIcon",
+			},
+			modified = {
+				symbol = "●",
+				highlight = "NeoTreeModified",
+			},
+			name = {
+				highlight = "NeoTreeFileName",
+			},
+		},
 	},
 }
