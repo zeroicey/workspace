@@ -1,4 +1,5 @@
 Invoke-Expression (&starship init powershell)
+Import-Module PSCompletions
 
 function y {
     $tmp = [System.IO.Path]::GetTempFileName()
