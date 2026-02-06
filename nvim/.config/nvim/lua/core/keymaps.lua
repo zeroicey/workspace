@@ -11,7 +11,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 keymap("i", "jj", "<Esc>")
-keymap("t", "jj", [[<C-\><C-n>]])
+keymap("t", "<Esc>", "<C-\\><C-n>")
 
 -- -----------------------------------------------------------------------------
 -- Window Management
@@ -71,25 +71,10 @@ keymap("v", "K", "5k", { desc = "Extend Selection Up 5 Lines" })
 -- Plugin Keymaps
 -- -----------------------------------------------------------------------------
 
--- File Explorer (requires neotree.nvim plugin)
-keymap("n", "<A-o>", ":Neotree buffers position=float<CR>", { desc = "Toggle NeoTree Buffers" })
-keymap("n", "<A-e>", function()
-	if vim.bo.filetype == "neo-tree" then
-		vim.cmd("Neotree close")
-	else
-		vim.cmd("Neotree filesystem reveal focus")
-	end
-end, { desc = "Focus or Toggle NeoTree filesystem" })
-
 -- Formatting (requires conform.nvim or another formatter plugin)
 keymap("n", ",f", function()
 	require("conform").format()
 end, { desc = "Format File" })
-
--- Telescope
-keymap("n", "<leader>o", ":Telescope buffers<CR>", { desc = "Telescope find buffers" })
-keymap("n", "<A-p>", ":Telescope find_files<CR>", { desc = "Telescope find files" })
-keymap("n", "<leader> ", ":Telescope live_grep<CR>", { desc = "Telescope find words" })
 
 keymap("n", ";", ":", { desc = "Open the command" })
 keymap("n", "gb", "<C-t>", { desc = "Go bact to previous definition" })

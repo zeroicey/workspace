@@ -41,3 +41,31 @@ opt.signcolumn = "yes" -- show sign column so that text doesn't shift
 -- disable netrw at the very start of your init.lua
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
+-- use zsh as default shell
+vim.opt.shell = "zsh"
+
+-- 自动开启 Treesitter 高亮
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = {
+		"c",
+		"lua",
+		"vim",
+		"vimdoc",
+		"query",
+		"markdown",
+		"markdown_inline",
+		"javascript",
+		"typescript",
+		"html",
+		"css",
+		"python",
+		"rust",
+		"bash",
+		"go",
+	},
+	callback = function()
+		vim.treesitter.start()
+		vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+	end,
+})

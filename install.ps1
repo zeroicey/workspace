@@ -15,7 +15,7 @@ if (Test-Path $weztermLink) {
 cmd /c mklink `"$weztermLink`" `"$weztermTarget`"
 
 # 链接2：nvim目录
-$nvimTarget = "$scriptDir\nvim"
+$nvimTarget = "$scriptDir\nvim\.config\nvim"
 $nvimLink   = "$env:LOCALAPPDATA\nvim"
 if (Test-Path $nvimLink) {
     Remove-Item $nvimLink -Recurse -Force
