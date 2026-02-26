@@ -42,30 +42,8 @@ opt.signcolumn = "yes" -- show sign column so that text doesn't shift
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
--- use zsh as default shell
-vim.opt.shell = "zsh"
-
--- 自动开启 Treesitter 高亮
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = {
-		"c",
-		"lua",
-		"vim",
-		"vimdoc",
-		"query",
-		"markdown",
-		"markdown_inline",
-		"javascript",
-		"typescript",
-		"html",
-		"css",
-		"python",
-		"rust",
-		"bash",
-		"go",
-	},
-	callback = function()
-		vim.treesitter.start()
-		vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-	end,
-})
+if vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
+	vim.opt.shell = "pwsh.exe"
+else
+	vim.opt.shell = "zsh"
+end

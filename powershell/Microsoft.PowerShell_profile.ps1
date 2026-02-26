@@ -1,5 +1,4 @@
 Invoke-Expression (&starship init powershell)
-Import-Module PSCompletions
 
 function y {
     $tmp = [System.IO.Path]::GetTempFileName()
@@ -16,4 +15,4 @@ Set-Alias -Name vim -Value nvim
 Set-Alias -Name z -Value zoxide
 Set-Alias -Name make -Value mingw32-make
 
-Invoke-Expression (& { (zoxide init powershell | Out-String) })
+Invoke-Expression (& { (zoxide init powershell --cmd cd | Out-String) })

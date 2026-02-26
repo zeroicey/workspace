@@ -1,12 +1,18 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	branch = "main",
+	branch = "master",
 	lazy = false,
 	build = ":TSUpdate",
-	config = function()
-		require("nvim-treesitter").setup({})
-		require("nvim-treesitter").install({
+	main = "nvim-treesitter.configs",
+	opts = {
+		sync_install = false,
+		auto_install = true,
+		highlight = {
+			enable = true,
+		},
+		ensure_installed = {
 			"c",
+			"java",
 			"lua",
 			"vim",
 			"vimdoc",
@@ -22,6 +28,6 @@ return {
 			"bash",
 			"go",
 			"sql",
-		})
-	end,
+		},
+	},
 }

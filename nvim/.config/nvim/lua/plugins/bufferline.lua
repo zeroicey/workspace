@@ -8,8 +8,6 @@ return {
 
 		{ "(", "<cmd>BufferLineMovePrev<cr>", desc = "Move Buffer Left" },
 		{ ")", "<cmd>BufferLineMoveNext<cr>", desc = "Move Buffer Right" },
-
-		{ "<a-q>", "<cmd>bdelete<cr>", desc = "Delete Buffer" },
 	},
 	opts = {},
 }
