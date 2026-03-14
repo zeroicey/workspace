@@ -15,4 +15,6 @@ Set-Alias -Name vim -Value nvim
 Set-Alias -Name z -Value zoxide
 Set-Alias -Name make -Value mingw32-make
 
+Set-Alias -Name python -Value python3
+
 Invoke-Expression (& { (zoxide init powershell --cmd cd | Out-String) })

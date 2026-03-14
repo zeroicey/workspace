@@ -43,7 +43,7 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 if vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
-	vim.opt.shell = "pwsh.exe"
+	opt.shell = "cmd"
 else
-	vim.opt.shell = "zsh"
+	opt.shell = "zsh"
 end
